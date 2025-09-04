@@ -45,7 +45,7 @@ class NotePolicy
      */
     public function delete(User $user, Notes $note): bool
     {
-        return $note->user_id === $user->id;
+        return true;
     }
 
     /**

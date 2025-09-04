@@ -47,13 +47,13 @@ class NoteController extends Controller
 
     public function edit(Notes $note)
     {
-        $this->authorize('update', $note);
+        
         return view('notes.form', compact('note'));
     }
 
     public function update(Request $request, Notes $note)
     {
-        $this->authorize('update', $note);
+        
 
         $data = $request->validate([
             'title' => 'required|string|max:100',
@@ -65,11 +65,11 @@ class NoteController extends Controller
         return redirect()->route('notes.index')->with('status', 'Note updated.');
     }
 
-    public function destroy(Notes $note)
+   public function destroy(Notes $note)
     {
-        $this->authorize('delete', $note);
+
         $note->delete();
 
-        return redirect()->route('notes.index')->with('status', 'Note deleted.');
+        return redirect()->route('notes.index')->with('success', 'Note deleted successfully.');
     }
 }
